@@ -10,6 +10,7 @@ public enum ErrorCode {
     USER_PASSWORD_ERROR(1001,"密码错误"),
     GET_TOKEN_FAIL(1002,"获取token失败"),
     TOKEN_IS_NOT_MATCH_USER(1003,"请使用自己的token进行接口请求"),
+    USER_HAS_EXIST(1004,"该用户名已经存在"),
 
     BLOG_IS_NOT_EXIST(2001,"该博客不存在")
     ;

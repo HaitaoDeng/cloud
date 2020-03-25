@@ -2,12 +2,12 @@ package com.meiying.service;
 
 import com.meiying.client.AuthServiceClient;
 import com.meiying.common.dto.RespDTO;
+import com.meiying.common.entity.User;
 import com.meiying.common.exception.CommonException;
 import com.meiying.common.exception.ErrorCode;
 import com.meiying.dao.UserDao;
 import com.meiying.dto.LoginDTO;
 import com.meiying.entity.JWT;
-import com.meiying.entity.User;
 import com.meiying.util.BPwdEncoderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +27,10 @@ public class UserService {
 
     public User getUserInfo(String username){
         return userDao.findByUsername(username);
+    }
+
+    public void deleteUserInfo(Long id) {
+        userDao.delete(id);
     }
 
     public RespDTO login(String username , String password){

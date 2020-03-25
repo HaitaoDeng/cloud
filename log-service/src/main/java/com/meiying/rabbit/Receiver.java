@@ -1,7 +1,7 @@
 package com.meiying.rabbit;
 
 import com.alibaba.fastjson.JSON;
-import com.meiying.entity.SysLog;
+import com.meiying.common.entity.SysLog;
 import com.meiying.service.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

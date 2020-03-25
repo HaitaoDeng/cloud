@@ -2,11 +2,11 @@ package com.meiying.service;
 
 
 import com.meiying.client.UserServiceClient;
+import com.meiying.common.entity.User;
 import com.meiying.dao.BlogDao;
 import com.meiying.dto.BlogDetailDTO;
 import com.meiying.common.dto.RespDTO;
 import com.meiying.entity.Blog;
-import com.meiying.entity.User;
 import com.meiying.common.exception.CommonException;
 import com.meiying.common.exception.ErrorCode;
 import com.meiying.util.UserUtils;
@@ -49,6 +49,10 @@ public class BlogService {
         blogDetailDTO.setBlog(blog);
         blogDetailDTO.setUser(respDTO.data);
         return blogDetailDTO;
+    }
+
+    public void deleteBlogDetail(Long id) {
+        blogDao.delete(id);
     }
 
 }

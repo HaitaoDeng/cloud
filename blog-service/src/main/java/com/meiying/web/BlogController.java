@@ -52,4 +52,17 @@ public class BlogController {
     public RespDTO getBlogDetail(@PathVariable Long id){
         return RespDTO.onSuc(blogService.findBlogDetail(id));
     }
+
+    @ApiOperation(value = "删除当前用户的博文", notes = "删除当前用户的博文")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @DeleteMapping("/{username}/{id}")
+    @SysLogger("deleteBlogDetail")
+    public RespDTO deleteBlogDetail(@PathVariable String username, @PathVariable Long id) {
+        if(UserUtils.isMyself(username)) {
+            blogService.deleteBlogDetail(id);
+            return RespDTO.onSuc(null);
+        }else {
+            throw new CommonException(ErrorCode.TOKEN_IS_NOT_MATCH_USER);
+        }
+    }
 }

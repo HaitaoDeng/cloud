@@ -1,6 +1,6 @@
 package com.meiying.dao;
 
-import com.meiying.entity.SysLog;
+import com.meiying.common.entity.SysLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -2,7 +2,7 @@ package com.meiying.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.meiying.common.annotation.SysLogger;
-import com.meiying.entity.SysLog;
+import com.meiying.common.entity.SysLog;
 import com.meiying.service.LoggerService;
 import com.meiying.util.HttpUtils;
 import com.meiying.util.UserUtils;
@@ -25,7 +25,7 @@ public class SysLoggerAspect {
     @Autowired
     private LoggerService loggerService;
 
-    @Pointcut("@annotation(com.meiying.annotation.SysLogger)")
+    @Pointcut("@annotation(com.meiying.common.annotation.SysLogger)")
     public void loggerPointCut() {
 
     }

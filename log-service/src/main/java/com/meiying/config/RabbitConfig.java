@@ -20,6 +20,7 @@ public class RabbitConfig {
 
   public   final static String queueName = "spring-boot";
 
+
     @Bean
     Queue queue() {
         return new Queue(queueName, false);

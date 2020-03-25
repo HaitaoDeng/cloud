@@ -1,6 +1,7 @@
 package com.meiying.dto;
 
-import com.meiying.entity.User;
+
+import com.meiying.common.entity.User;
 
 public class LoginDTO {
     private User user;

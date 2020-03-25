@@ -1,0 +1,34 @@
+项目介绍：
+    spring cloud微服务架构，包含注册中心，网关，授权，用户服务，博客服务，配置中心，日志收集，监控中心
+    启动流程：
+        在config-service中修改数据库，服务ip地址等属性，启动rabbitMQ，先后启动eureka-service,config-service,zipkin-service,....
+
+1.常用url
+    用户注册：http://localhost:5000/userapi/user/registry
+    meiiyng   123456
+    {
+        "id": 13,
+        "username": "meiying",
+        "password": "$2a$10$9XyQByUfyjpenhZDUvfzUOYsajn.lAIJ/KPs3s1Iwn0xFHyfjoDVS"
+    }
+    获取token：http://localhost:9999/oauth/token
+    clint-id:uaa-service
+    password:123456
+    username:     password:
+
+2.网关：5000
+    user-service: /userapi/**
+    blog-service: /blogapi/**
+
+3.常见问题：
+    前端json输入：
+    {
+    	"user":
+    	{
+    		"id": 13
+    	},
+    	"content": "评论一下",
+    	"commentId": 0,
+    	"createTime": "2018-09-06 15:03:48",
+    	"blogId": 6
+    }

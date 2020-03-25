@@ -2,7 +2,9 @@ package com.meiying.web;
 
 import com.meiying.common.annotation.SysLogger;
 import com.meiying.common.dto.RespDTO;
-import com.meiying.entity.User;
+import com.meiying.common.exception.CommonException;
+import com.meiying.common.exception.ErrorCode;
+import com.meiying.common.entity.User;
 import com.meiying.service.UserService;
 import com.meiying.util.BPwdEncoderUtils;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +23,10 @@ public class UserController {
     @PostMapping("/registry")
     @SysLogger("registry")
     public User createUser(@RequestBody User user) {
-        //参数判读省略,判读该用户在数据库是否已经存在省略
+        User userDB = userService.getUserInfo(user.getUsername());
+        if(userDB != null) {
+            throw new CommonException(ErrorCode.USER_HAS_EXIST);
+        }
         String entryPassword = BPwdEncoderUtils.BCryptPassword(user.getPassword());
         user.setPassword(entryPassword);
         return userService.createUser(user);
@@ -35,6 +40,22 @@ public class UserController {
         //参数判读省略
         User user = userService.getUserInfo(username);
         return RespDTO.onSuc(user);
+    }
+
+    @ApiOperation(value = "删除当前用户", notes = "删除当前用户")
+    @PostMapping("/delete")
+    @PreAuthorize("hasRole('USER')")
+    @SysLogger("deleteUserInfo")
+    public RespDTO deleteUserInfo(@RequestBody User user) {
+        String entryPassword = BPwdEncoderUtils.BCryptPassword(user.getPassword());
+        user.setPassword(entryPassword);
+        User userDB = userService.getUserInfo(user.getUsername());
+        if(userDB.getPassword().equals(user.getPassword()) && userDB.getUsername().equals(user.getUsername())) {
+            userService.deleteUserInfo(user.getId());
+        } else {
+            throw new CommonException(ErrorCode.USER_PASSWORD_ERROR);
+        }
+        return RespDTO.onSuc(null);
     }
 
     //    @Autowired

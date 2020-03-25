@@ -1,7 +1,7 @@
 package com.meiying.service;
 
 import com.meiying.dao.SysLogDAO;
-import com.meiying.entity.SysLog;
+import com.meiying.common.entity.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

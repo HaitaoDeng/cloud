@@ -2,7 +2,7 @@ package com.meiying.client.hystrix;
 
 import com.meiying.client.UserServiceClient;
 import com.meiying.common.dto.RespDTO;
-import com.meiying.entity.User;
+import com.meiying.common.entity.User;
 import org.springframework.stereotype.Component;
 
 
